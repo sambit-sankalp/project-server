@@ -2,9 +2,9 @@ import User from '../models/userModel.js';
 import generateToken from '../utils/generateToken.js';
 
 const authUser = async (req, res) => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
 
-  const user = await User.findOne({ email });
+  const user = await User.findOne({ username });
 
   if (user && (await user.matchPassword(password))) {
     res.json({
@@ -16,7 +16,7 @@ const authUser = async (req, res) => {
     });
   } else {
     res.status(401);
-    throw new Error('Invalid email and password');
+    res.send('Invalid username or password');
   }
 };
 
@@ -27,7 +27,7 @@ const registerUser = async (req, res) => {
 
   if (userExists) {
     res.status(400);
-    throw new Error('User already exists');
+    res.send('Invalid username or password');
   }
 
   const user = await User.create({
@@ -47,7 +47,7 @@ const registerUser = async (req, res) => {
     });
   } else {
     res.status(404);
-    throw new Error('Error occurred');
+    res.send('Error creating user');
   }
 };
 
