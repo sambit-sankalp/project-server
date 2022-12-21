@@ -3,7 +3,8 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import bodyParser from "body-parser";
 import connectDB from './config/db.js';
-import userRoutes from './Routes/userRoutes.js';
+import userRoutes from './routes/userRoutes.js';
+import gameRoutes from './routes/gameRoutes.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
 dotenv.config();
@@ -17,6 +18,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api/user', userRoutes);
+app.use('/api/game', gameRoutes)
 
 
 app.get('/', (req, res) => {

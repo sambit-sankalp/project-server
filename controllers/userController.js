@@ -23,7 +23,7 @@ const authUser = async (req, res) => {
 const registerUser = async (req, res) => {
   const { name, username, email, password } = req.body;
 
-  const userExists = await User.findOne({ email });
+  const userExists = await User.findOne({ email, username });
 
   if (userExists) {
     res.status(400);

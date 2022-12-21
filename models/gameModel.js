@@ -1,0 +1,47 @@
+import mongoose from 'mongoose';
+
+const gameSchema = mongoose.Schema(
+  {
+    stepnumber: {
+      type: Number,
+      required: true,
+      default: 0,
+    },
+    history: {
+      type: Array,
+      required: true,
+      default: Array(9).fill(null),
+    },
+    xIsNext: {
+      type: Boolean,
+      required: true,
+      default: true,
+    },
+    isCompleted: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    winner: {
+      type: String,
+      required: false,
+      default: '',
+    },
+    player: {
+      type: String,
+      required: true,
+    },
+    createdBy: {
+      type: String,
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  },
+  { collection: 'games' }
+);
+
+const Game = mongoose.model('Game', gameSchema);
+
+export default Game;
