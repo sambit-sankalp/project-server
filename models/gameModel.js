@@ -8,9 +8,9 @@ const gameSchema = mongoose.Schema(
       default: 0,
     },
     history: {
-      type: Array,
+      type: [[String]],
       required: true,
-      default: Array(9).fill(null),
+      default: [[null, null, null, null, null, null, null, null, null]],
     },
     xIsNext: {
       type: Boolean,
