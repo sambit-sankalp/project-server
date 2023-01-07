@@ -51,22 +51,4 @@ const registerUser = async (req, res) => {
   }
 };
 
-const getUserByEmail = async (req, res) => {
-  const { email } = req.body;
-
-  const user = await User.findOne({ email });
-
-  if (user) {
-    res.json({
-      _id: user._id,
-      name: user.name,
-      username: user.username,
-      email: user.email,
-    });
-  } else {
-    res.status(401);
-    res.send('Not Found');
-  }
-};
-
-export { authUser, registerUser, getUserByEmail };
+export { authUser, registerUser };
