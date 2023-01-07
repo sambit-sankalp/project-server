@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import User from './userModel.js';
 
 const gameSchema = mongoose.Schema(
   {
@@ -28,11 +29,11 @@ const gameSchema = mongoose.Schema(
       default: '',
     },
     player: {
-      type: String,
+      type: User.schema,
       required: true,
     },
     createdBy: {
-      type: String,
+      type: User.schema,
       required: true,
     },
   },
